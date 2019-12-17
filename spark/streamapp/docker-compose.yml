@@ -1,0 +1,43 @@
+version: "3.3"
+services:
+  spark-master:
+    image: workshop/spark:latest
+    container_name: spark-master
+    hostname: spark-master
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    networks:
+      - kafka_default
+    environment:
+      - "SPARK_LOCAL_IP=spark-master"
+      - "SPARK_MASTER_PORT=7077"
+      - "SPARK_MASTER_WEBUI_PORT=8080"
+    command: "/start-master.sh"
+  spark-worker:
+    image: workshop/spark:latest
+    depends_on:
+      - spark-master
+    ports:
+      - 8080
+    networks:
+      - kafka_default
+    environment:
+      - "SPARK_MASTER=spark://spark-master:7077"
+      - "SPARK_WORKER_WEBUI_PORT=8080"
+    command: "/start-worker.sh"
+  spark-app:
+    image: workshop/streamapp:latest
+    depends_on:
+      - spark-master
+    networks:
+      - kafka_default
+    command: "/spark/bin/spark-submit 
+        --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.4,org.apache.spark:spark-avro_2.11:2.4.4 
+        --packages za.co.absa:abris_2.11:3.0.3
+        --repositories http://packages.confluent.io/maven/
+        --master spark://spark-master:7077  
+        --class com.example.acme.streamApp.KafkaStreamApp /streamApp.jar broker:29092 groupId stocks predictions http://prophet:5000"   
+networks:
+  kafka_default:
+    external: true

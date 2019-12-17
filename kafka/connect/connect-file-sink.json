@@ -1,0 +1,9 @@
+{
+    "name": "sales-file-sink",
+    "config": {
+        "connector.class": "FileStreamSink",
+        "tasks.max": 1,
+        "file": "/data/sales.sink.csv",
+        "topics": "sales"
+    }
+}

@@ -1,0 +1,132 @@
+{
+  "type": "graph",
+  "title": "AAPL",
+  "gridPos": {
+    "x": 0,
+    "y": 0,
+    "w": 23,
+    "h": 16
+  },
+  "id": 2,
+  "datasource": "elk",
+  "targets": [
+    {
+      "metrics": [
+        {
+          "type": "max",
+          "id": "1",
+          "field": "CLOSED",
+          "settings": {},
+          "meta": {}
+        }
+      ],
+      "bucketAggs": [
+        {
+          "type": "date_histogram",
+          "id": "2",
+          "settings": {
+            "interval": "auto",
+            "min_doc_count": 0,
+            "trimEdges": 0
+          },
+          "field": "DT"
+        }
+      ],
+      "timeField": "DT",
+      "refId": "A",
+      "query": "TICKER=AAPL"
+    },
+    {
+      "refId": "B",
+      "metrics": [
+        {
+          "type": "max",
+          "id": "1",
+          "field": "CLOSED",
+          "settings": {},
+          "meta": {}
+        }
+      ],
+      "bucketAggs": [
+        {
+          "type": "date_histogram",
+          "id": "2",
+          "settings": {
+            "interval": "auto",
+            "min_doc_count": 0,
+            "trimEdges": 0
+          },
+          "field": "DT"
+        }
+      ],
+      "timeField": "DT",
+      "query": "TICKER=AAPL_P"
+    }
+  ],
+  "renderer": "flot",
+  "yaxes": [
+    {
+      "label": "HIST",
+      "show": true,
+      "logBase": 1,
+      "min": null,
+      "max": null,
+      "format": "short"
+    },
+    {
+      "label": "PREDICTED",
+      "show": true,
+      "logBase": 1,
+      "min": null,
+      "max": null,
+      "format": "short"
+    }
+  ],
+  "xaxis": {
+    "show": true,
+    "mode": "time",
+    "name": null,
+    "values": [],
+    "buckets": null
+  },
+  "yaxis": {
+    "align": false,
+    "alignLevel": null
+  },
+  "lines": true,
+  "fill": 1,
+  "linewidth": 1,
+  "dashes": false,
+  "dashLength": 10,
+  "spaceLength": 10,
+  "points": true,
+  "pointradius": 0.5,
+  "bars": false,
+  "stack": false,
+  "percentage": false,
+  "legend": {
+    "show": true,
+    "values": true,
+    "min": true,
+    "max": true,
+    "current": false,
+    "total": false,
+    "avg": false,
+    "alignAsTable": false,
+    "rightSide": false
+  },
+  "nullPointMode": "null",
+  "steppedLine": false,
+  "tooltip": {
+    "value_type": "individual",
+    "shared": true,
+    "sort": 0
+  },
+  "timeFrom": null,
+  "timeShift": null,
+  "aliasColors": {},
+  "seriesOverrides": [],
+  "thresholds": [],
+  "links": [],
+  "transparent": true
+}

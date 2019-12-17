@@ -1,0 +1,14 @@
+{
+  "name": "elk",
+  "config": {
+    "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+    "tasks.max": "1",
+    "topics": "stocks,stocks-predictions",
+    "connection.url": "http://elasticsearch:9200",
+    "type.name": "tx",
+    "key.ignore": true,
+    "schemas.enable": false,
+    "schema.ignore": true,
+    "topic.index.map": "stocks:market,stocks-predictions:market"
+  }
+}

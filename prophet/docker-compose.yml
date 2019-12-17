@@ -1,0 +1,20 @@
+version: "3"
+services:
+  package:
+    image: facebook/prophet
+    container_name: prophet
+    hostname: prophet
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "flask run"
+    ports:
+      - "5000:5000"
+    networks:
+      - kafka_default
+    volumes:
+      - ../data:/data
+      - ./apps:/apps
+networks:
+  kafka_default:
+    external: true
