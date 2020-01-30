@@ -1,6 +1,6 @@
 # Workshop : Automatic Stocks Forecasting  
 
-status : DRAFT
+status : DRAFT v1.0
 
 ## Important links
 
