@@ -14,7 +14,7 @@
 CREATE STREAM stocks_csv(DT STRING, OPENED DOUBLE, HIHG DOUBLE, LOW DOUBLE, CLOSED DOUBLE, ADJ_CLOSED DOUBLE, VOLUME BIGINT) 
      WITH (kafka_topic='stocks-csv', value_format='DELIMITED');
 
---  This stream converts CSV data from stocks-csv stream & writes to topic 'stocks' in AVRO format 
+--  This stream converts CSV data from stocks_csv stream & writes to topic 'stocks' in AVRO format 
 --  ELK connector puts data to elastic search from this topic
 
 CREATE STREAM stocks WITH (kafka_topic='stocks', VALUE_FORMAT='avro', timestamp='DT', timestamp_format='yyy-MM-dd') AS
