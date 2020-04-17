@@ -11,7 +11,9 @@ from calendar import Calendar, MONDAY
 from datetime import date, timedelta
 
 from convertdate.islamic import from_gregorian, to_gregorian
-from holidays import WEEKEND, HolidayBase, easter, rd
+from holidays import WEEKEND, HolidayBase
+from dateutil.easter import easter
+from dateutil.relativedelta import relativedelta as rd
 from lunarcalendar import Lunar, Converter
 
 # Official public holidays at a country level
