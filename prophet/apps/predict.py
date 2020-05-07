@@ -25,8 +25,8 @@ df['cap']=cap
 df['floor']=floor
 
 print('train model ..')
-m = Prophet(weekly_seasonality=True, daily_seasonality=True)
-m = Prophet(growth='linear',changepoint_prior_scale=0.05, weekly_seasonality=True, daily_seasonality=True)
+m = Prophet(weekly_seasonality=True, daily_seasonality=True,changepoint_prior_scale=1)
+#m = Prophet(growth='logistic',changepoint_prior_scale=1, weekly_seasonality=True, daily_seasonality=True)
 m.fit(df)
 
 print("predict for {} days".format(predict_days))
