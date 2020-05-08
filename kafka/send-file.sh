@@ -1,7 +1,8 @@
 #!/bin/bash
 
 sleep_time=${1:-5}
-filename=${2:-../data/aapl.csv}
+#filename=${2:-../data/aapl.csv}
+filename=${2:-../data/AAPL_FROM2017.csv}
 
 while read -r line; do
     echo "$line";

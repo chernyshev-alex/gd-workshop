@@ -7,7 +7,8 @@ from datetime import datetime,date
 
 #DATA_DIR = '/data/'
 DATA_DIR = '../../data/'
-INPUT_CSV = abspath(DATA_DIR + 'aapl.csv')
+#INPUT_CSV = abspath(DATA_DIR + 'aapl.csv')
+INPUT_CSV = abspath(DATA_DIR + 'AAPL_FROM2017.csv')
 
 if (len(sys.argv) < 2):
     print("Usage : {} days".format(sys.argv[0]))
@@ -22,11 +23,11 @@ df = csv[['Date', 'Close']]
 df.rename(columns={'Date' : 'ds', 'Close' : 'y'}, inplace=True)
 last = datetime.strptime(df.tail(1)['ds'].values[0],'%Y-%m-%d')
 predict_days = (datetime.now() - last).days
-#Filter before 2019
-#df = df[df['ds']>'2019-01-101']
+#Filter all before 2019
+#df = df[df['ds']>'2019-01-01']
 
 
-cap = 300
+cap = 350
 floor =  10
 df['cap']=cap
 df['floor']=floor
@@ -43,10 +44,10 @@ future['floor']=floor
 forecast = m.predict(future)
 
 fig1 = m.plot(forecast)
-#fig2 = m.plot_components(forecast)
+fig2 = m.plot_components(forecast)
 
 fig1.savefig(DATA_DIR + 'forecast.png')
-#fig2.savefig(DATA_DIR + 'components.png')
+fig2.savefig(DATA_DIR + 'components.png')
 
 print('saved charts to ..' + DATA_DIR)
 plt.title(f'Stock price of AAPL');
