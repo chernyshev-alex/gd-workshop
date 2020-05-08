@@ -180,12 +180,12 @@ services:
     volumes:
      - ./ksql:/scripts
 
-  kibana:
-    image: docker.elastic.co/kibana/kibana:6.3.0
-    depends_on:
-      - elasticsearch
-    ports:
-      - 5601:5601
-    environment:
-      xpack.security.enabled: "false"
-      discovery.type: "single-node"
+#  kibana:
+#    image: docker.elastic.co/kibana/kibana:6.3.0
+#    depends_on:
+#      - elasticsearch
+#    ports:
+#      - 5601:5601
+#    environment:
+#      xpack.security.enabled: "false"
+#      discovery.type: "single-node"

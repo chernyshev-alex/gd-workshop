@@ -3,6 +3,10 @@
 set -e
 
 echo -e "\nassembly app and building  image.."
+echo -e "SBT version is: "
+sbt sbtVersion
+echo -e "Java version is: "
+java -version
 sbt assembly && docker build -f Dockerfile-app -t workshop/streamapp:latest .
 
 [ $? -eq 0 ]  || exit 1
