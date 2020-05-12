@@ -4,9 +4,9 @@
 
 -- Pipeline design : ------
 --
--- 1. [csv-producer] -> topic:stock_csv -> stream:stocks -> ELK connect:elastic -> graphana
--- 2. stream:stocks -> spark:stream-app -> propheat:predict  -> topic:predictions -> topic:stocks_predictions
--- 3. topic:stocks_predictions -> ELK connect:elastic  -> graphana
+-- 1. [csv-producer] -> topic:stock_csv -> stream:stocks -> ELK connect:elastic -> grafana
+-- 2. stream:stocks -> spark:stream-app -> prophet:predict  -> topic:predictions -> topic:stocks_predictions
+-- 3. topic:stocks_predictions -> ELK connect:elastic  -> grafanashow
 ----------
 
 --  This stream reads from input CSV topic : stocks-csv

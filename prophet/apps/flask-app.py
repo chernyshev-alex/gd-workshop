@@ -55,7 +55,7 @@ def predict(dt):
     # Implement : SELECT * FROM forecast WHERE ds = @dt ;  dt in format 'yyyy-MM-dd'
     #
 
-    #THATS MOCKED RESULT YOU SHOULD REPLACE THIS LINE
+    #THATS MOCKED RESULT. YOU SHOULD REPLACE THIS LINE
     row= pd.DataFrame.from_dict({'ds':[datetime.strptime(dt,date_format)],'yhat':[400]})
 
     # End workshop ======================
