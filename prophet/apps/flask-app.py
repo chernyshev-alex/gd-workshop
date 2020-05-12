@@ -4,8 +4,10 @@ from flask import Flask, abort
 import pandas as pd
 from fbprophet import Prophet
 
+date_format= '%Y-%m-%d'
 DATA_DIR = '/data/'
-INPUT_CSV = DATA_DIR + 'aapl.csv'
+#INPUT_CSV = DATA_DIR + 'aapl.csv'
+INPUT_CSV = DATA_DIR + 'AAPL_FROM2017.csv'
 
 forecast = None
 
@@ -27,7 +29,7 @@ def load_and_train_model(ndays):
 
 def row_to_json(row):
     d = row[['ds', 'yhat']].reset_index().to_dict() 
-    dt = d['ds'][0].date().strftime('%Y-%M-%d')
+    dt = d['ds'][0].date().strftime(date_format)
     closed = d['yhat'][0]
     return json.dumps({"DT": dt , "TICKER": 'AAPL_P', "CLOSED" : closed})
 
@@ -53,6 +55,8 @@ def predict(dt):
     # Implement : SELECT * FROM forecast WHERE ds = @dt ;  dt in format 'yyyy-MM-dd'
     #
 
+    #THATS MOCKED RESULT. YOU SHOULD REPLACE THIS LINE
+    row= pd.DataFrame.from_dict({'ds':[datetime.strptime(dt,date_format)],'yhat':[400]})
 
     # End workshop ======================
 
